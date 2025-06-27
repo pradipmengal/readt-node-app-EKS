@@ -51,9 +51,13 @@ jobs:
           sed -i "s|image: .*react-node-frontend.*|image: $FRONTEND_IMAGE:$COMMIT_SHA|g" k8s/frontend-deployment.yaml
 
       - name: Commit and push updated manifests
+        env:
+            GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "actions@github.com"
-          git add k8s/
-          git commit -m "Update image tags to $COMMIT_SHA"
-          git push origin master
+            git config --global user.name "github-actions"
+            git config --global user.email "actions@github.com"
+            git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/pradipmengal/readt-node-app-EKS.git
+            git add k8s/
+            git commit -m "Update image tags to $COMMIT_SHA" || echo "No changes to commit"
+            git push origin master
+
