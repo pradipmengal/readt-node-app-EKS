@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: 882961514310.dkr.ecr.ap-south-1.amazonaws.com/react-node-backend:add7a65b0493b3562f6686de76860f9740e729da
+          image: 882961514310.dkr.ecr.ap-south-1.amazonaws.com/react-node-backend:94e4809d91e3b7f65332702e3400af72f7537204
           ports:
             - containerPort: 3000
           env:
