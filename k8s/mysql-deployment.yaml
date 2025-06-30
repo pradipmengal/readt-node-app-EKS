@@ -1,17 +1,4 @@
 apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mysql-pvc
-  namespace: default
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-  storageClassName: gp2 
----
-apiVersion: v1
 kind: Service
 metadata:
   name: mysql
@@ -52,6 +39,5 @@ spec:
               mountPath: /var/lib/mysql
       volumes:
         - name: mysql-storage
-        #  persistentVolumeClaim:
-        #    claimName: mysql-pvc
           emptyDir: {}
+
