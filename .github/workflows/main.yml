@@ -45,20 +45,29 @@ jobs:
           docker build -t backend ./backend
           docker tag backend:latest $BACKEND_IMAGE:latest
 
-      - name: Trivy Scan Backend Image (SARIF)
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: backend
-          format: sarif
-          output: trivy-backend.sarif
-          exit-code: 0
-          severity: LOW
+   #   - name: Trivy Scan Backend Image (SARIF)
+   #     uses: aquasecurity/trivy-action@master
+   #     with:
+   #       image-ref: backend
+   #       format: sarif
+   #       output: trivy-backend.sarif
+   #       exit-code: 0
+   #       severity: LOW
 
-      - name: Upload Backend SARIF to GitHub Security
-        uses: github/codeql-action/upload-sarif@v2
+      - name: Trivy Scan Backend to Text File (LOW only)
+        run: |
+          trivy image --severity LOW \
+          --format table \
+          --exit-code 1 \
+          --output trivy-backend.txt \
+          backend
+      
+      - name: Upload Trivy Text Report (Backend)
+        uses: actions/upload-artifact@v4
         with:
-          sarif_file: trivy-backend.sarif
-          
+          name: trivy-backend-report
+          path: trivy-backend.txt
+   
       - name: Push image
         run: |
           docker push $BACKEND_IMAGE:latest
