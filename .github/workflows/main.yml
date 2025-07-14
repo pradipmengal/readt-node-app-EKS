@@ -54,6 +54,10 @@ jobs:
    #       exit-code: 0
    #       severity: LOW
 
+      - name: Install Trivy
+        run: |
+          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+
       - name: Trivy Scan Backend to Text File (LOW only)
         run: |
           trivy image --severity LOW \
