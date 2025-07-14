@@ -1,4 +1,4 @@
------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
 1) create this two clusters use this command with eksctl  
 
  eksctl create cluster   --name react-node-cluster   --version 1.29   --region ap-south-1  \
