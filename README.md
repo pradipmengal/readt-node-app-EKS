@@ -30,7 +30,7 @@ aws ecr delete-repository \
   --repository-name react-node-frontend \
   --region ap-south-1 \
   --force
-
+...
 -----------------------------------------------------------------------------------------------
 
 5) To authenticate the ECR with the machine
