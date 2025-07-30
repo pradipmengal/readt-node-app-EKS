@@ -31,7 +31,8 @@ spec:
             - containerPort: 3000
           env:
             - name: DB_HOST
-              value: database-1.cr0840yoiitd.ap-south-1.rds.amazonaws.com
+              value: mysql
+              #value: database-1.cr0840yoiitd.ap-south-1.rds.amazonaws.com
             - name: DB_USER
               value: root
             - name: DB_PASSWORD
