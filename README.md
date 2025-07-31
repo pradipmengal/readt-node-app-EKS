@@ -33,6 +33,6 @@ aws ecr delete-repository \
 ...
 -----------------------------------------------------------------------------------------------
 
-5) To authenticate the ECR with the machine
+5) To authenticate the ECR with the machine.
 
 
